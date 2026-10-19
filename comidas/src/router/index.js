@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import HomeView from '@/views/HomeView.vue'
-import ComidasView from '@/views/ComidasView.vue'
+import NoticiasView from '@/views/NoticiasView.vue'
 
 const routes = [
     {
@@ -10,9 +10,9 @@ const routes = [
         component: HomeView
     },
     {
-        path: '/comidas',
-        name: 'Comidas',
-        component: ComidasView
+        path: '/noticias',
+        name: 'Notícias',
+        component: NoticiasView
     }
 ]
 const router = createRouter({

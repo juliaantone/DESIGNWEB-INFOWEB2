@@ -35,7 +35,7 @@ main{
 }
 article{
     max-width: 900px;
-    margin: auto;
+    margin: 0.8rem;
     background-color: white;
     padding: 30px;
     border-radius: 10px;
@@ -56,4 +56,78 @@ p{
 .comida h3{
     color: #5a0d0d; 
     margin-bottom: 10px;
+}
+
+.noticias {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+label {
+    color: #5a0d0d;
+    font-weight: bold;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #c9a5a5;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+button {
+    width: fit-content;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5a0d0d;
+    color: white;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #794873;
+}
+.noticias ul {
+    list-style: none;
+}
+
+.noticias li {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #e2c4c4;
+    border-left: 5px solid #5a0d0d;
+    border-radius: 8px;
+    background-color: #fff8f8;
+}
+
+.noticias li strong {
+    display: block;
+    color: #5a0d0d;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 15px;
+    }
+
+    .noticias {
+        padding: 15px;
+    }
+
+    nav ol {
+        gap: 15px;
+        flex-wrap: wrap;
+    }
 }
