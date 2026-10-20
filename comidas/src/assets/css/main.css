@@ -28,7 +28,7 @@ nav ol{
     gap: 30px;
 }
 nav a:hover{
-    color: #794873;
+    color: #f6f4f6;
 }
 main{
     padding: 30px;
@@ -57,77 +57,62 @@ p{
     color: #5a0d0d; 
     margin-bottom: 10px;
 }
-
-.noticias {
-    max-width: 800px;
-    margin: 30px auto;
-    padding: 20px;
+article.pagina-promocoes {
+    max-width: 1000px;
+    margin: 3rem;
     background-color: white;
+    padding: 40px;
     border-radius: 10px;
 }
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 30px;
-}
 
-label {
+.pagina-promocoes h2 {
     color: #5a0d0d;
-    font-weight: bold;
-}
-
-input {
-    padding: 10px;
-    border: 1px solid #c9a5a5;
-    border-radius: 5px;
-    font-family: inherit;
-}
-
-button {
-    width: fit-content;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #5a0d0d;
-    color: white;
-    font-family: inherit;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #794873;
-}
-.noticias ul {
-    list-style: none;
-}
-
-.noticias li {
     margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #e2c4c4;
-    border-left: 5px solid #5a0d0d;
-    border-radius: 8px;
-    background-color: #fff8f8;
+}
+.pagina-promocoes .descricao {
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+.pagina-promocoes #painel {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+.pagina-promocoes .promocao {
+    background-color: #efd9d9;
+    padding: 25px;
+    border-radius: 10px;
+    min-height: 150px;
+    border: 1px solid #e2c1c1;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.noticias li strong {
-    display: block;
+.pagina-promocoes .promocao:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 12px rgba(90, 13, 13, 0.15);
+}
+
+.pagina-promocoes .promocao h3 {
     color: #5a0d0d;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    font-size: 22px;
+    text-align: center;
+}
+
+.pagina-promocoes .promocao p {
+    line-height: 1.5;
+    margin-bottom: 0;
+    font-size: 18px;
 }
 
 @media (max-width: 600px) {
-    main {
-        padding: 15px;
+    article.pagina-promocoes {
+        margin: 0.8rem;
+        padding: 20px;
     }
 
-    .noticias {
-        padding: 15px;
-    }
-
-    nav ol {
-        gap: 15px;
-        flex-wrap: wrap;
+    .pagina-promocoes #painel {
+        grid-template-columns: 1fr;
     }
 }

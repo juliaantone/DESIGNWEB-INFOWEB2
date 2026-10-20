@@ -1,106 +1,41 @@
 <template>
-  <main class="noticias">
-    <h2>Promoções</h2>
+    <article class="pagina-promocoes">
+        <h2>Promoções</h2>
 
-    <p v-if="noticias.length === 0">
-      Nenhuma promoção cadastrada.
-    </p>
+        <p class="descricao">
+            Sabor que combina com qualquer momento!
+            Confira nossas promoções especiais e aproveite
+            para deixar seu dia ainda mais doce, refrescante e delicioso.
+        </p>
 
-    <ul v-else>
-      <li v-for="item in noticias" :key="item.id">
-        <strong>{{ item.titulo }}</strong>
-        <p>{{ item.texto }}</p>
-        <button @click="excluirNoticia(item.id)">
-          Excluir
-        </button>
-      </li>
-    </ul>
-  </main>
+        <div id="painel">
+            <div
+                class="promocao"
+                v-for="item in promocoes"
+                :key="item.id"
+            >
+                <h3>{{ item.titulo }}</h3>
+                <p>{{ item.texto }}</p>
+            </div>
+        </div>
+    </article>
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
 
-const chaveStorage = 'delicias_noticias'
+import { ref } from 'vue'
 
-const noticiasIniciais = [
-  {
-    id: 1,
-    titulo: 'Promoção',
-    texto: 'Hambúrguer Artesanal por apenas R$ 24,99'
-  },
-  {
-    id: 2,
-    titulo: 'Promoção',
-    texto: 'Pizza de Calabresa por apenas R$ 39,99'
-  },
-  {
-    id: 3,
-    titulo: 'Promoção',
-    texto: 'Açaí com acompanhamento por apenas R$ 11,99'
-  },
-  {
-    id: 4,
-    titulo: 'Promoção',
-    texto: 'Batata Frita por apenas R$ 9,99'
-  }
-]
+const promocoes = ref([
+  { id: 1, titulo: 'Hambúguer Artesanal', texto: 'Hambúrguer Artesanal por apenas R$ 24,99'},
+  { id: 2, titulo: 'Pizza', texto: 'Pizza de Calabresa por apenas R$ 39,99' },
+  { id: 3, titulo: 'Açaí', texto: 'Açaí com acompanhamento por apenas R$ 11,99' },
+  { id: 4, titulo: 'Batata Frita', texto: 'Batata Frita por apenas R$ 9,99' }
+])
 
-function carregarNoticias() {
-  try {
-    const dados = localStorage.getItem(chaveStorage)
-    if (dados !== null) {
-      const lista = JSON.parse(dados)
-      if (Array.isArray(lista)) {
-        return lista
-      }
-    }
-  } catch (erro) {
-    console.error('Erro ao carregar promoções:', erro)
-  }
-
-  return noticiasIniciais
-}
-const noticias = ref(carregarNoticias())
-const novoTitulo = ref('')
-const novoTexto = ref('')
-
-// Salva a lista sempre que ela for alterada.
-watch(
-  noticias,
-  (novaLista) => {
-    try {
-      localStorage.setItem(
-        chaveStorage,
-        JSON.stringify(novaLista)
-      )
-    } catch (erro) {
-      console.error('Erro ao salvar promoções:', erro)
-    }
-  },
-  { deep: true, immediate: true }
-)
-
-function adicionarNoticia() {
-  const titulo = novoTitulo.value.trim()
-  const texto = novoTexto.value.trim()
-
-  if (!titulo || !texto) return
-
-  noticias.value.push({
-    id: Date.now(),
-    titulo,
-    texto
-  })
-
-  novoTitulo.value = ''
-  novoTexto.value = ''
-}
-
-function excluirNoticia(id) {
-  noticias.value = noticias.value.filter(
-    (item) => item.id !== id
-  )
-}
 </script>
 
+<script>
+export default {
+    name: 'NoticiasView'
+}
+</script>
