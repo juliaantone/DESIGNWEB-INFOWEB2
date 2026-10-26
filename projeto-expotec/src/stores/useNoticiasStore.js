@@ -24,8 +24,29 @@ export const useNoticiasStore = defineStore('noticias',() => {
         return noticiasLista //caso não tenha nada no localstorage, pega a lista mesmo
     }
     const noticias = ref(carregarNoticias()) //declara a variável de estado como reativa e chama a função carregarNoticias
+    function removerNoticia(id){
+        const indice = noticias.value.findIndex(j=> j.id === id)
+        noticias.value.splice(indice,1);
+} 
 
-    //watch é o observador de mudanças
+    function favoritarNoticia(id){
+        const noticia = noticias.value.find(j =>j.id === id)
+        noticia.favorito = !noticia.favorito
+    }
+
+    function adicionarNoticia(id){
+        const id = noticias.value.length > 0 ? Math.max(...noticias.value.map(a => a.id)) +1 : 1;
+
+        noticias.value.push({
+            id,
+            titulo: novaNoticia.titulo,
+            texto: novaNoticia.texto,
+            favorito: false
+        })
+    
+    }
+
+//watch é o observador de mudanças
     watch( 
         //garante a persistência (capacidade de manter as informações salvas) automática dos dados
         () => noticias.value, //referência do valor que será monitorado
@@ -37,7 +58,10 @@ export const useNoticiasStore = defineStore('noticias',() => {
 
 
     return {
-        noticias //variável que poderá ser acessada por outras páginas, por exemplo NoticiasView
+        noticias, //variável que poderá ser acessada por outras páginas, por exemplo NoticiasView
+        removerNoticia,
+        favoritarNoticia,
+        adicionarNoticia
     }
 
 
