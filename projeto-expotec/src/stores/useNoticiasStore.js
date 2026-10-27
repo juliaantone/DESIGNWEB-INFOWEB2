@@ -34,7 +34,7 @@ export const useNoticiasStore = defineStore('noticias',() => {
         noticia.favorito = !noticia.favorito
     }
 
-    function adicionarNoticia(id){
+    function adicionarNoticia(novaNoticia){
         const id = noticias.value.length > 0 ? Math.max(...noticias.value.map(a => a.id)) +1 : 1;
 
         noticias.value.push({
